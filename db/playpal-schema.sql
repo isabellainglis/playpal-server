@@ -1,0 +1,54 @@
+DROP TABLE IF EXISTS song;
+
+DROP TABLE IF EXISTS chord;
+
+DROP TABLE IF EXISTS section;
+
+DROP TABLE IF EXISTS song_section;
+
+DROP TABLE IF EXISTS section_chord;
+
+CREATE TABLE song (
+id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+name VARCHAR(255) NOT NULL,
+artist VARCHAR(255) NOT NULL,
+length VARCHAR(255) NOT NULL,
+img VARCHAR(255),
+img_alt VARCHAR(255),
+genre VARCHAR(255),
+difficulty INT,
+tempo BIGINT,
+capo INT,
+tuning VARCHAR(255)
+);
+
+CREATE TABLE chord (
+id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+song_id INT UNSIGNED NOT NULL,
+name VARCHAR(255),
+img VARCHAR(255),
+strum_pattern VARCHAR(255),
+FOREIGN KEY (song_id) REFERENCES song(id)
+);
+
+CREATE TABLE section (
+id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+name VARCHAR(255)
+);
+
+CREATE TABLE song_section (
+song_id INT UNSIGNED NOT NULL,
+section_id INT UNSIGNED NOT NULL,
+section_order INT,
+FOREIGN KEY (song_id) REFERENCES song(id),
+FOREIGN KEY (section_id) REFERENCES section(id)
+);
+
+CREATE TABLE section_chord (
+section_id INT UNSIGNED NOT NULL,
+chord_id INT UNSIGNED NOT NULL,
+duration BIGINT,
+lyrics VARCHAR(255),
+FOREIGN KEY (section_id) REFERENCES section(id),
+FOREIGN KEY (chord_id) REFERENCES chord(id)
+);
