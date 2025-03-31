@@ -1,12 +1,5 @@
-DROP TABLE IF EXISTS song;
+DROP TABLE IF EXISTS section_chord, song_section, section, chord, song;
 
-DROP TABLE IF EXISTS chord;
-
-DROP TABLE IF EXISTS section;
-
-DROP TABLE IF EXISTS song_section;
-
-DROP TABLE IF EXISTS section_chord;
 
 CREATE TABLE song (
 id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -26,9 +19,9 @@ CREATE TABLE chord (
 id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
 song_id INT UNSIGNED NOT NULL,
 name VARCHAR(255),
-img VARCHAR(255),
 strum_pattern VARCHAR(255),
 FOREIGN KEY (song_id) REFERENCES song(id)
+ON DELETE CASCADE
 );
 
 CREATE TABLE section (
@@ -42,13 +35,16 @@ section_id INT UNSIGNED NOT NULL,
 section_order INT,
 FOREIGN KEY (song_id) REFERENCES song(id),
 FOREIGN KEY (section_id) REFERENCES section(id)
+ON DELETE CASCADE
 );
 
 CREATE TABLE section_chord (
 section_id INT UNSIGNED NOT NULL,
 chord_id INT UNSIGNED NOT NULL,
-duration BIGINT,
+chord_order INT NOT NULL,
+duration FLOAT,
 lyrics VARCHAR(255),
 FOREIGN KEY (section_id) REFERENCES section(id),
 FOREIGN KEY (chord_id) REFERENCES chord(id)
+ON DELETE CASCADE
 );
