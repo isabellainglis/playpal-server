@@ -61,7 +61,7 @@ const getSingleSongChords = async (req, res) => {
 const getSingleSongSections = async (req, res) => {
   const songId = req.params.id;
 
-  const sql = ` SELECT * FROM section_chord
+  const sql = ` SELECT section_id, name FROM section_chord
   JOIN section
   ON section.id = section_chord.section_id
   WHERE section.song_id = ?

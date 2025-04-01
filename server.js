@@ -2,6 +2,7 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import songRoutes from "./routes/songRoutes.js";
+import chordRoutes from "./routes/chordRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -14,6 +15,7 @@ app.get("/", (_req, res) => {
 });
 
 app.use("/songs", songRoutes);
+app.use("/chords", chordRoutes);
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);

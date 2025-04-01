@@ -4,7 +4,7 @@ import {
   getSingleSong,
   getSingleSongChords,
   getSingleSongSections,
-} from "../controllers/songController.js";
+} from "../controllers/songControllers.js";
 
 const router = express.Router();
 
