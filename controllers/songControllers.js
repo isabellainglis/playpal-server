@@ -36,7 +36,7 @@ const getSingleSong = async (req, res) => {
   }
 };
 
-const getSingleSongChords = async (req, res) => {
+const getSingleSongDetails = async (req, res) => {
   const songId = req.params.id;
 
   const sql = `SELECT * FROM section_chord
@@ -49,9 +49,29 @@ const getSingleSongChords = async (req, res) => {
     const [results] = await connection.query(sql, [songId]);
 
     if (!results.length) {
+      res.status(404).json({ msg: `No data found for song ID ${songId}` });
+      return;
+    }
+    res.json(results);
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+const getSingleSongChords = async (req, res) => {
+  const songId = req.params.id;
+
+  const sql = `SELECT chord.name FROM chord
+  WHERE chord.song_id = ?;`;
+
+  try {
+    const [results] = await connection.query(sql, [songId]);
+
+    if (!results.length) {
       res.status(404).json({ msg: `No chords found for song ID ${songId}` });
       return;
     }
+
     res.json(results);
   } catch (error) {
     res.status(500).json(error.message);
@@ -84,6 +104,7 @@ const getSingleSongSections = async (req, res) => {
 export {
   getAllSongs,
   getSingleSong,
+  getSingleSongDetails,
   getSingleSongChords,
   getSingleSongSections,
 };

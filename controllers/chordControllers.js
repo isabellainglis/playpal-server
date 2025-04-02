@@ -1,7 +1,7 @@
 import connection from "../utils/mysql.js";
 
 const getAllChords = async (_req, res) => {
-  const sql = "SELECT * FROM chordLibrary";
+  const sql = "SELECT * FROM chordLibrary ORDER BY chordLibrary.name";
 
   try {
     const [results] = await connection.query(sql);
