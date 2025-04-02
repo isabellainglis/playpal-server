@@ -1,8 +1,13 @@
 import express from "express";
-import { getAllChords } from "../controllers/chordControllers.js";
+import {
+  getAllSongChords,
+  getChordData,
+} from "../controllers/chordControllers.js";
 
 const router = express.Router();
 
-router.get("/", getAllChords);
+router.get("/", getChordData);
+
+router.get("/all", getAllSongChords);
 
 export default router;

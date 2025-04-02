@@ -61,7 +61,7 @@ const getSingleSongDetails = async (req, res) => {
 const getSingleSongChords = async (req, res) => {
   const songId = req.params.id;
 
-  const sql = `SELECT chord.name FROM chord
+  const sql = `SELECT name, song_id FROM chord
   WHERE chord.song_id = ?;`;
 
   try {
