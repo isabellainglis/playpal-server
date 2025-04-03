@@ -8,6 +8,7 @@ const getChordData = async (_req, res) => {
 
     if (!results.length) {
       res.status(400).json({ msg: "No chords in DB" });
+      return;
     }
 
     res.json(results);

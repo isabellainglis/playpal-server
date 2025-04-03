@@ -8,6 +8,7 @@ const getAllSongs = async (_req, res) => {
 
     if (!results.length) {
       res.status(404).json({ msg: "No songs in DB" });
+      return;
     }
 
     res.json(results);
