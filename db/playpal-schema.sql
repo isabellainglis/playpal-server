@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS section_chord, song_section, section, chord, song;
+DROP TABLE IF EXISTS section_chord, song_section, chordLibrary, section, chord, song;
 
 
 CREATE TABLE song (
@@ -12,7 +12,9 @@ genre VARCHAR(255),
 difficulty INT,
 tempo BIGINT,
 capo INT,
-tuning VARCHAR(255)
+tuning VARCHAR(255),
+chords VARCHAR(255),
+delay INT
 );
 
 CREATE TABLE chord (
@@ -26,7 +28,15 @@ ON DELETE CASCADE
 
 CREATE TABLE section (
 id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+song_id INT UNSIGNED NOT NULL,
 name VARCHAR(255)
+);
+
+CREATE TABLE chordLibrary (
+id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+name VARCHAR(255),
+long_name VARCHAR(255),
+img VARCHAR(255)
 );
 
 CREATE TABLE song_section (
@@ -40,7 +50,7 @@ ON DELETE CASCADE
 
 CREATE TABLE section_chord (
 section_id INT UNSIGNED NOT NULL,
-chord_id INT UNSIGNED NOT NULL,
+chord_id INT UNSIGNED,
 chord_order INT NOT NULL,
 duration FLOAT,
 lyrics VARCHAR(255),
