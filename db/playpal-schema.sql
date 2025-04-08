@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS section_chord, song_section, chordLibrary, section, chord, song;
+DROP TABLE IF EXISTS section_chord, chordLibrary, section, chord, song;
 
 
 CREATE TABLE song (
@@ -37,15 +37,6 @@ id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
 name VARCHAR(255),
 long_name VARCHAR(255),
 img VARCHAR(255)
-);
-
-CREATE TABLE song_section (
-song_id INT UNSIGNED NOT NULL,
-section_id INT UNSIGNED NOT NULL,
-section_order INT,
-FOREIGN KEY (song_id) REFERENCES song(id),
-FOREIGN KEY (section_id) REFERENCES section(id)
-ON DELETE CASCADE
 );
 
 CREATE TABLE section_chord (
