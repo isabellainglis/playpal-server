@@ -19,7 +19,8 @@ INSERT INTO song (name, artist, length, img, img_alt, genre, difficulty, tempo, 
 VALUES
 ('Learn To Fly', 'Foo Fighters', '3:54', 'foofighters', 'Foo Fighters band', 'Alt Rock', 2, 136, 0, 'standard', 'Bsus4, F#m11, E, G, A, D', 2500),
 ('The Only Exception', 'Paramore', '4:27', 'paramore', 'Paramore band', 'Alt', 2, 138, 4, 'standard', 'G, Dm, Cmaj7, Am, D, F, C', 4200),
-('Wagon Wheel', 'Darius Rucker', '4:58', 'dariusrucker', 'Darius Rucker singer', 'Country', 1, 145, 1, 'standard', 'G, D, Em, C', 2500);
+('Wagon Wheel', 'Darius Rucker', '4:58', 'dariusrucker', 'Darius Rucker album cover', 'Country', 1, 145, 1, 'standard', 'G, D, Em, C', 2500),
+('Numb', 'Linkin Park', '3:07', 'linkinpark', 'Linkin Park album cover', 'Alt Rock', 1, 110, 2, 'standard', 'Em, C, G, D, D/F#, G/B, Bsus4', 1100);
 
 
 INSERT INTO chord (song_id, name, strum_pattern)
@@ -53,9 +54,17 @@ VALUES
 (3, 'G', 'D'),
 (3, 'D', 'D'),
 (3, 'Em', 'D'),
-(3, 'C', 'D');
-
-
+(3, 'C', 'D'),
+(4, '', 'D,D,U U,D,U'),
+(4, 'Em', 'D,D,U U,D,U'),
+(4, 'C', 'D,D,U U,D,U'),
+(4, 'G', 'D,D,U U,D,U'),
+(4, 'D', 'D,D,U U,D,U'),
+(4, 'Em', 'D D,U'),
+(4, 'D/F#', 'D D,U'),
+(4, 'G', 'D D,U'),
+(4, 'G/B', 'D D,U'),
+(4, 'Bsus4', 'D,D,U U,D,U');
 
 INSERT INTO
 	section (name, song_id)
@@ -91,14 +100,25 @@ VALUES
 	('Verse3', 3),
 	('Chorus3', 3),
 	('Chorus4', 3),
-	('Outro', 3);
-
+	('Outro', 3),
+	('Intro', 4),
+	('Verse1', 4),
+	('Pre-Chorus1', 4),	
+	('Chorus1', 4),
+	('Verse2', 4),
+	('Pre-Chorus2', 4),	
+	('Chorus2', 4),
+	('Bridge1', 4),
+	('Chorus3', 4),
+	('Outro', 4);
+	
+	
 INSERT INTO
 	section_chord (section_id, chord_id, chord_order, duration, lyrics)
 VALUES
 	(1, 17, 1, 2, ''),
-	(1, 1, 2, 1.8, ''),
-	(1, 2, 3, 1.8, ''),
+	(1, 1, 2, 1.7, ''),
+	(1, 2, 3, 1.7, ''),
 	(1, 3, 4, 1.7, ''),
 	(1, 3, 5, 1.7, ''),
 	(1, 1, 6, 1.7, ''),
@@ -122,7 +142,7 @@ VALUES
 	(2, 3, 24, 1.8, 'die.'),
 	(2, 3, 25, 1.7, ''),
 	(5, 1, 26, 1.7, "Now, I'm lookin' to the sky to"),
-	(5, 2, 27, 1.8, 'save me.'),
+	(5, 2, 27, 1.7, 'save me.'),
 	(5, 3, 28, 1.8, "Lookin' for a sign of"),
 	(5, 3, 29, 1.7, 'life.'),
 	(5, 1, 30, 1.9, "Lookin' for something to"),
@@ -233,8 +253,8 @@ VALUES
 
 INSERT INTO section_chord (section_id, chord_id, chord_order, duration, lyrics)
 VALUES
-(12, 18, 1, 3.5, ''),
-(12, 7, 2, 1.3, ''),
+(12, 18, 1, 3.4, ''),
+(12, 7, 2, 1.2, ''),
 (12, 7, 3, 1.3, ''),
 (12, 7, 4, 1.3, ''),
 (12, 7, 5, 1.4, ''),
@@ -250,7 +270,7 @@ VALUES
 (12, 8, 15, 1.3, ''),
 (12, 9, 16, 1.3, ''),
 (12, 9, 17, 1.3, ''),
-(13, 7, 18, 1.3, 'When I was'),
+(13, 7, 18, 1.2, 'When I was'),
 (13, 7, 19, 1.3, 'younger I'),
 (13, 7, 20, 1.3, 'saw'),
 (13, 7, 21, 1.3, 'my daddy'),
@@ -434,8 +454,8 @@ VALUES
 INSERT INTO
 	section_chord (section_id, chord_id, chord_order, duration, lyrics)
 VALUES
-(22, 22, 1, 1.8, ''),
-(22, 23, 2, 1.6, ''),
+(22, 22, 1, 1.7, ''),
+(22, 23, 2, 1.4, ''),
 (22, 24, 3, 1.6, ''),
 (22, 25, 4, 1.6, ''),
 (22, 26, 5, 1.6, ''),
@@ -446,8 +466,8 @@ VALUES
 (22, 23, 10, 1.6, ''),
 (22, 24, 11, 1.6, ''),
 (22, 26, 12, 1.6, ''),
-(22, 26, 13, 1.65, ''),
-(23, 23, 14, 1.6, 'Heading down south to the'),
+(22, 26, 13, 1.6, ''),
+(23, 23, 14, 1.5, 'Heading down south to the'),
 (23, 24, 15, 1.6, 'land of the pines,'),
 (23, 25, 16, 1.6, "I'm thumbing my way into"),
 (23, 26, 17, 1.6, 'North Caroline.'),
@@ -478,7 +498,7 @@ VALUES
 (24, 23, 42, 1.7, 'Hey,'),
 (24, 24, 43, 1.6, 'momma'),
 (24, 26, 44, 1.65, 'rock me.'),
-(24, 26, 45, 1.6, ''),
+(24, 26, 45, 1.5, ''),
 (25, 23, 46, 1.6, ''),
 (25, 24, 47, 1.6, ''),
 (25, 25, 48, 1.6, ''),
@@ -486,8 +506,8 @@ VALUES
 (25, 23, 50, 1.6, ''),
 (25, 24, 51, 1.65, ''),
 (25, 26, 52, 1.6, ''),
-(25, 26, 53, 1.65, ''),
-(26, 23, 54, 1.65, 'Running from the cold'),
+(25, 26, 53, 1.6, ''),
+(26, 23, 54, 1.6, 'Running from the cold'),
 (26, 24, 55, 1.65, 'up in New England, I was'),
 (26, 25, 56, 1.6, 'born to be a fiddler in an'),
 (26, 26, 57, 1.6, 'old time string band. My'),
@@ -503,7 +523,7 @@ VALUES
 (26, 24, 67, 1.6, ''),
 (26, 26, 68, 1.6, 'living that old life'),
 (26, 26, 69, 1.6, 'no more.'),
-(27, 23, 70, 1.5, 'So rock me momma like a'),
+(27, 23, 70, 1.6, 'So rock me momma like a'),
 (27, 24, 71, 1.6, 'wagon wheel,'),
 (27, 25, 72, 1.6, 'rock me momma any'),
 (27, 26, 73, 1.6, 'way you feel.'),
@@ -607,7 +627,92 @@ VALUES
 (32, 26, 171, 1.6, ''),
 (32, 26, 172, 1.6, '');
 
-
-
-
-
+INSERT INTO
+	section_chord (section_id, chord_id, chord_order, duration, lyrics)
+VALUES
+(33, 31, 1, 3.1, ''),
+(33, 32, 2, 2.2, ''),
+(33, 33, 3, 2.2, ''),
+(33, 34, 4, 2.2, ''),
+(33, 35, 5, 2.2, ''),
+(33, 32, 6, 2.2, ''),
+(33, 33, 7, 2.2, ''),
+(33, 34, 8, 2.2, ''),
+(33, 35, 9, 2.2, ''),
+(34, 32, 10, 2, "I'm tired of being what you"),
+(34, 33, 11, 2.2, 'want me to be.'),
+(34, 34, 12, 2.2, 'Feeling so faithless,'),
+(34, 35, 13, 2.2, 'lost under the surface.'),
+(34, 32, 14, 2.2, "Don't know what you're"),
+(34, 33, 15, 2.2, 'expecting of me.'),
+(34, 34, 16, 2.2, 'Put under the pressure'),
+(34, 35, 17, 2.2, 'of walking in your'),
+(35, 33, 18, 2.1, 'shoes. (caught in the undertow,'),
+(35, 35, 19, 2.2, 'just caught in the undertow) Every'),
+(35, 32, 20, 2.1, 'step that I take, is another'),
+(35, 34, 21, 2.2, 'mistake to'),
+(35, 33, 22, 2.1, 'youuu (caught in the undertow'),
+(35, 35, 23, 2.2, 'just caught in the undertow)'),
+(36, 32, 24, 2.1, "I've become so"),
+(36, 33, 25, 2.2, "numb, I can't feel you"),
+(36, 34, 26, 2.1, "there. I've become so"),
+(36, 35, 27, 2.2, 'tired, so much more'),
+(36, 32, 28, 2.2, "aware. I'm becoming"),
+(36, 33, 29, 2.2, 'this, all I want to'),
+(36, 34, 30, 2.2, 'do, is be more like'),
+(36, 35, 31, 2.2, 'me and be less like'),
+(37, 32, 32, 2.1, "you. Can't you see that you're"),
+(37, 33, 33, 2.2, 'smothering me,'),
+(37, 34, 34, 2.2, 'holding too tightly,'),
+(37, 35, 35, 2.2, 'afraid to lose'),
+(37, 32, 36, 2.2, 'control. Cause everything that you'),
+(37, 33, 37, 2.2, 'thought I would be, has'),
+(37, 34, 38, 2.2, 'fallen apart'),
+(37, 35, 39, 2.2, 'right in front of'),
+(38, 33, 40, 2.1, 'youuu (caught in the undertow,'),
+(38, 35, 41, 2.2, 'just caught in the undertow) Every'),
+(38, 32, 42, 2.2, 'step that I take, is another'),
+(38, 34, 43, 2.2, 'mistake to'),
+(38, 33, 44, 2.1, 'you (caught in the undertow'),
+(38, 35, 45, 2.2, 'just caught in the undertow) and every'),
+(38, 32, 46, 2.2, 'second I waste is more than'),
+(38, 34, 47, 2.1, 'I can takeee'),
+(39, 32, 48, 2.1, "I've become so"),
+(39, 33, 49, 2.2, "numb, I can't feel you"),
+(39, 34, 50, 2.2, "there. I've become so"),
+(39, 35, 51, 2.2, 'tired, so much more'),
+(39, 32, 52, 2.2, "aware. I'm becoming"),
+(39, 33, 53, 2.2, 'this, all I want to'),
+(39, 34, 54, 2.2, 'do, is be more like'),
+(39, 35, 55, 2.2, 'me and be less like'),
+(40, 33, 56, 2.1, 'you. And I'),
+(40, 35, 57, 2.2, 'knowww I may'),
+(40, 36, 58, 1.2, 'end'),
+(40, 37, 59, 1.2, 'up'),
+(40, 38, 60, 1.2, 'fail'),
+(40, 39, 61, 1.2, 'ing'),
+(40, 33, 62, 2, 'tooo. But I'),
+(40, 35, 63, 2.2, 'knowww, you were'),
+(40, 40, 64, 2.2, 'just like me with someone'),
+(40, 40, 65, 2.1, 'disappointed in'),
+(40, 40, 66, 2.2, 'youuu.'),
+(41, 32, 67, 2.1, "I've become so"),
+(41, 33, 68, 2.2, "numb, I can't feel you"),
+(41, 34, 69, 2.2, "there. I've become so"),
+(41, 35, 70, 2.2, 'tired, so much more'),
+(41, 32, 71, 2.2, "aware. I'm becoming"),
+(41, 33, 72, 2.2, 'this, all I want to'),
+(41, 34, 73, 2.2, 'do, is be more like'),
+(41, 35, 74, 2.2, 'me and be less like'),
+(41, 32, 75, 2.1, "I've become so"),
+(41, 33, 76, 2.2, "numbbb"),
+(41, 34, 77, 2.2, '(tired of being what you '),
+(41, 35, 78, 2.2, 'want me to be)'),
+(41, 32, 79, 2.2, "I've become so"),
+(41, 33, 80, 2.2, "numbbb"),
+(41, 34, 81, 2.2, '(tired of being what you '),
+(41, 35, 82, 2.2, 'want me to be)'),
+(41, 32, 83, 2.2, ''),
+(41, 33, 84, 2.2, ''),
+(41, 34, 85, 2.2, ''),
+(41, 35, 86, 2.2, '');
