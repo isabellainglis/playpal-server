@@ -1,6 +1,5 @@
 DROP TABLE IF EXISTS section_chord, chordLibrary, section, chord, song;
 
-
 CREATE TABLE song (
 id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
 name VARCHAR(255) NOT NULL,
@@ -67,7 +66,6 @@ VALUES
 ('Cmaj7', 'C major 7th', 'Cmaj7'),
 ('Cadd9', 'C added ninth chord', 'Cadd9');
 
-
 INSERT INTO song (name, artist, length, img, img_alt, genre, difficulty, tempo, capo, tuning, chords, delay)
 VALUES
 ('Learn To Fly', 'Foo Fighters', '3:54', 'foofighters', 'Foo Fighters band', 'Alt Rock', 2, 136, 0, 'standard', 'Bsus4, F#m11, E, G, A, D', 2500),
@@ -75,7 +73,6 @@ VALUES
 ('Wagon Wheel', 'Darius Rucker', '4:58', 'dariusrucker', 'Darius Rucker album cover', 'Country', 1, 145, 1, 'standard', 'G, D, Em, C', 2500),
 ('Numb', 'Linkin Park', '3:07', 'linkinpark', 'Linkin Park album cover', 'Alt Rock', 1, 110, 2, 'standard', 'Em, C, G, D, D/F#, G/B, Bsus4', 1100),
 ('Good Riddance', 'Green Day', '2:33', 'greenday', 'Green Day Band', 'Alt Rock', 2, 95, 0, 'standard', 'G, Cadd9, D, Em', 3000);
-
 
 INSERT INTO chord (song_id, name, strum_pattern)
 VALUES
@@ -131,8 +128,6 @@ VALUES
 (5, 'Em', 'D,D D,U,D,U'),
 (5, 'G', 'U,D D,U,D,U'),
 (5, 'G', 'D');
-
-
 
 INSERT INTO
 	section (name, song_id)
@@ -191,9 +186,7 @@ VALUES
 	('Chorus4', 5),
 	('Instrumental4', 5),
 	('Outro', 5);
-	
-	
-	
+
 INSERT INTO
 	section_chord (section_id, chord_id, chord_order, duration, lyrics)
 VALUES
@@ -330,7 +323,6 @@ VALUES
 	(11, 19, 131, 1.2, ''),
 	(11, 20, 132, 1, ''),
 	(11, 21, 133, 0.9, '');
-
 
 INSERT INTO section_chord (section_id, chord_id, chord_order, duration, lyrics)
 VALUES
@@ -530,7 +522,6 @@ VALUES
 (20, 14, 194, 1.6, "I'm on my"),
 (20, 15, 195, 2.3, 'way to believing.'),
 (20, 16, 196, 2.6, '');
-
 
 INSERT INTO
 	section_chord (section_id, chord_id, chord_order, duration, lyrics)
