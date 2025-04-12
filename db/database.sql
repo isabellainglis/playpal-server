@@ -1,3 +1,55 @@
+DROP TABLE IF EXISTS section_chord, chordLibrary, section, chord, song;
+
+
+CREATE TABLE song (
+id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+name VARCHAR(255) NOT NULL,
+artist VARCHAR(255) NOT NULL,
+length VARCHAR(255) NOT NULL,
+img VARCHAR(255),
+img_alt VARCHAR(255),
+genre VARCHAR(255),
+difficulty INT,
+tempo BIGINT,
+capo INT,
+tuning VARCHAR(255),
+chords VARCHAR(255),
+delay INT
+);
+
+CREATE TABLE chord (
+id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+song_id INT UNSIGNED NOT NULL,
+name VARCHAR(255),
+strum_pattern VARCHAR(255),
+FOREIGN KEY (song_id) REFERENCES song(id)
+ON DELETE CASCADE
+);
+
+CREATE TABLE section (
+id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+song_id INT UNSIGNED NOT NULL,
+name VARCHAR(255)
+);
+
+CREATE TABLE chordLibrary (
+id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+name VARCHAR(255),
+long_name VARCHAR(255),
+img VARCHAR(255)
+);
+
+CREATE TABLE section_chord (
+section_id INT UNSIGNED NOT NULL,
+chord_id INT UNSIGNED,
+chord_order INT NOT NULL,
+duration FLOAT,
+lyrics VARCHAR(255),
+FOREIGN KEY (section_id) REFERENCES section(id),
+FOREIGN KEY (chord_id) REFERENCES chord(id)
+ON DELETE CASCADE
+);
+
 INSERT INTO chordLibrary (name, long_name, img)
 VALUES
 ('C', 'C major', 'C'),
