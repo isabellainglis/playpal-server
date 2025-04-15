@@ -1,10 +1,10 @@
-import connection from "../utils/mysql.js";
+import pool from "../utils/mysql.js";
 
 const getAllSongs = async (_req, res) => {
   const sql = "SELECT * FROM song";
 
   try {
-    const [results] = await connection.query(sql);
+    const [results] = await pool.query(sql);
 
     if (!results.length) {
       res.status(404).json({ msg: "No songs in DB" });
@@ -24,7 +24,7 @@ const getSingleSong = async (req, res) => {
   WHERE id = ?`;
 
   try {
-    const [results] = await connection.query(sql, [songId]);
+    const [results] = await pool.query(sql, [songId]);
 
     if (!results.length) {
       res.status(404).json({ msg: `No record with ID ${songId}` });
@@ -47,7 +47,7 @@ const getSingleSongDetails = async (req, res) => {
   ORDER BY chord_order;`;
 
   try {
-    const [results] = await connection.query(sql, [songId]);
+    const [results] = await pool.query(sql, [songId]);
 
     if (!results.length) {
       res.status(404).json({ msg: `No data found for song ID ${songId}` });
@@ -66,7 +66,7 @@ const getSingleSongChords = async (req, res) => {
   WHERE chord.song_id = ?;`;
 
   try {
-    const [results] = await connection.query(sql, [songId]);
+    const [results] = await pool.query(sql, [songId]);
 
     if (!results.length) {
       res.status(404).json({ msg: `No chords found for song ID ${songId}` });
@@ -90,7 +90,7 @@ const getSingleSongSections = async (req, res) => {
   `;
 
   try {
-    const [results] = await connection.query(sql, [songId]);
+    const [results] = await pool.query(sql, [songId]);
 
     if (!results.length) {
       res.status(404).json({ msg: `No data found for song ID ${songId}` });

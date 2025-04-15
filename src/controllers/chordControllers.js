@@ -1,10 +1,10 @@
-import connection from "../utils/mysql.js";
+import pool from "../utils/mysql.js";
 
 const getChordData = async (_req, res) => {
   const sql = "SELECT * FROM chordLibrary ORDER BY chordLibrary.name";
 
   try {
-    const [results] = await connection.query(sql);
+    const [results] = await pool.query(sql);
 
     if (!results.length) {
       res.status(400).json({ msg: "No chords in DB" });
